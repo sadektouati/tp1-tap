@@ -1,15 +1,14 @@
 //router
-import Dashboard from "./views/Dashboard.js"
-import Posts from "./views/Posts.js"
-import Settings from "./views/Settings.js"
-import PostView from "./views/PostView.js"
+import Documentation from "./views/Documentation.js"
+import Accueil from "./views/Accueil.js"
+import Reglage from "./views/Reglage.js"
+import Article from "./views/Article.js"
 
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$")
 
 const getParams = match => {
     const values = match.result.slice(1)
     const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(result => result[1]);
-
     return Object.fromEntries(keys.map((key, i) =>{
         return [key, values[i]]
     }))
@@ -18,10 +17,10 @@ const getParams = match => {
 const router = async () => {
 
     const routes = [
-        {path: "/", view:Dashboard},
-        {path: "/post", view:Posts},
-        {path: "/settings", view:Settings},
-        {path: '/post-view/:id', view: PostView}
+        {path: "/", view:Accueil},
+        {path: "/documentation", view:Documentation},
+        {path: "/reglage", view:Reglage},
+        {path: '/article/:id', view:Article}
     ]
     //match
     const potencialMatches = routes.map(route =>{

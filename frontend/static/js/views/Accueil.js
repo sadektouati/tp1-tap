@@ -3,7 +3,7 @@ import AbstractView from "./AbstractView.js";
 export default class extends AbstractView {
     constructor(params){
         super(params)
-        this.setTitle("Posts")
+        this.setTitle("News")
     }
 
     async getHtml() {
@@ -16,12 +16,12 @@ export default class extends AbstractView {
         const articles = data.articles
         let listPosts = "<ul>"
         for(let i in articles){
-            listPosts += "<li><a href='/post-view/" + i + "' data-link>" + articles[i]['title'] + "</a></li>"
+            listPosts += "<li><a href='/article/" + i + "' data-link>" + articles[i]['title'] + "</a></li>"
         }
         listPosts +="</ul>"
 
         return `
-        <h1>Posts</h1>
+        <h1>News</h1>
         `+listPosts;
     }
 }
